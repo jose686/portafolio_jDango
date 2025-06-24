@@ -1,0 +1,53 @@
+/* backend_jDango/static/css/layout.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    background-color: #e5f0fa; /* Un azul muy pálido y suave, menos brillante que el blanco */
+    color: #333333;
+}
+
+header {
+    grid-row: 1;
+    position: fixed; /* Esto es clave para que el header se quede arriba */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    background-color: white; /* Para que el contenido no se vea a través del menú */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Opcional: una sombra sutil para el header fijo */
+}
+
+main {
+    grid-row: 2;
+    /* Ajuste para el contenido principal para que no quede debajo del header fijo */
+    margin-top: 80px; /* Ajusta esto según la altura real de tu navbar/header */
+    padding-bottom: 20px; /* Un poco de padding antes del footer */
+}
+
+footer {
+    grid-row: 3;
+    /* Puedes añadir un poco de padding o margin para separar visualmente el footer */
+    padding-top: 20px; /* Ejemplo de separación */
+    background-color: #f8f9fa; /* Color de fondo para el footer */
+    color: #6c757d;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Estilos específicos de la Navbar */
+.navbar-brand{
+    margin-left: 3rem; /* Ajusta el margen izquierdo del logo */
+}
+.navbar-collapse {
+    margin-right: 3rem; /* Ajusta el margen derecho del menú */
+}
+
+/* Si tu logo o nav tienen un tamaño fijo, ajusta el margin-top de main para evitar solapamiento */
+/* Ejemplo: si tu navbar tiene una altura de 60px, pon margin-top: 60px; */
+/* Para una navbar Bootstrap estándar, 80px-90px suele ser un buen punto de partida */

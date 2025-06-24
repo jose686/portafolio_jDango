@@ -1,0 +1,173 @@
+{% extends 'base.html' %} {# Hereda de tu plantilla base #}
+{% load static %} {# Para poder usar {% static %} para la imagen y el audio #}
+
+{% block title %}Sobre Mí - José Rodríguez Desarrollador{% endblock title %} {# Título específico para esta página #}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_head %}
+
+{% block content %} {# Aquí va el contenido específico de la página "Sobre Mí" #}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm about-hero-card">
+                <div class="card-body text-center">
+                    {# La ruta de la imagen 'assets/images/user.jpg' debe mapearse a tu carpeta static #}
+                    <img src="{% static 'images/user.jpg' %}" alt="José - Desarrollador Full-Stack"
+                        class="profile-img mb-3">
+
+                    <h1 class="mb-3">Sobre Mí</h1>
+                    <p class="lead mb-0">
+                        ¡Hola! Soy <strong>José</strong>, un <strong>desarrollador Full-Stack con una sólida mentalidad
+                            empresarial y una profunda pasión por la creación de soluciones tecnológicas
+                            innovadoras</strong>. Mi trayectoria, forjada en la experiencia directa con negocios, me ha
+                        impulsado a transformar ideas complejas en <strong>productos digitales funcionales y
+                            accesibles</strong>, siempre con un enfoque en la eficiencia y el valor.
+                    </p>
+                </div>
+            </div>
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-dark">Mi Trayectoria</h2>
+                    <p class="card-text">
+                        Mi viaje en el mundo profesional comenzó hace más de veinte años como
+                        <strong>carnicero</strong>, un oficio que me enseñó el valor del <strong>trabajo duro, la
+                            atención al detalle y la gestión del día a día</strong>. Esta experiencia se expandió al
+                        asumir la <strong>dirección de una ganadería caprina familiar</strong>, donde durante casi tres
+                        años, me enfrenté a desafíos empresariales cruciales. Comprendí la importancia de la
+                        <strong>eficiencia, la distribución directa y la escalabilidad</strong>, lo que me llevó a tomar
+                        la difícil pero necesaria decisión de cerrar el negocio al ver sus límites de crecimiento.
+                    </p>
+                    <p class="card-text">
+                        Posteriormente, mi incursión en el comercio con un compañero frutero, aunque terminó en fracaso,
+                        reafirmó mi <strong>resiliencia</strong> y mi capacidad para <strong>analizar situaciones
+                            adversas y tomar decisiones difíciles por mi bienestar y futuro</strong>. Estas vivencias me
+                        impulsaron a una profunda reflexión sobre cómo construir un negocio con un techo mucho más
+                        lejano y un potencial de crecimiento real.
+                    </p>
+                    <p class="card-text">
+                        Fue entonces cuando la <strong>programación</strong> emergió como la respuesta lógica. Vi en la
+                        informática no solo una profesión, sino una <strong>plataforma para crear productos escalables,
+                            resolver problemas a gran escala y generar un impacto positivo</strong> sin las limitaciones
+                        de los negocios tradicionales. Decidí invertir mis recursos y tiempo en una <strong>formación
+                            sólida</strong>, comenzando con un Grado Medio en Microinformática y, de forma autodidacta,
+                        adentrándome en el desarrollo Full-Stack. Cada línea de código que escribo reafirma mi
+                        <strong>pasión por crear, innovar y encontrar soluciones eficientes a problemas
+                            cotidianos</strong>, impulsando mi visión de un futuro personal y profesional con un
+                        propósito más allá de lo local.
+                    </p>
+
+                    <div class="audio-player-container mt-4 text-center">
+                        <p class="mb-3 text-secondary">¿Quieres escuchar mi historia? Aquí la tienes narrada con mi
+                            <strong>voz clonada</strong> (proyecto Python):</p>
+                        <audio controls class="custom-audio-player">
+                            {# La ruta del audio 'assets/audio/sobremi.wav' debe mapearse a tu carpeta static #}
+                            <source src="{% static 'audio/sobremi.wav' %}" type="audio/wav">
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-dark">Mis Habilidades Clave</h2>
+                    <p class="card-text mb-4">Mi enfoque como desarrollador Full-Stack se nutre de un apetito constante
+                        por el aprendizaje y la aplicación práctica, abarcando diversas tecnologías y herramientas:</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Frontend:</h6>
+                            <ul class="list-unstyled">
+                                <li>Angular, TypeScript, JavaScript</li>
+                                <li>HTML5, CSS3 (Bootstrap, Sass/Less)</li>
+                                <li>Diseño Responsivo, UX/UI</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Backend:</h6>
+                            <ul class="list-unstyled">
+                                <li>Python (Flask)</li>
+                                <li>Node.js (Express.js)</li>
+                                <li>RESTful APIs</li>
+                                <li>Bases de Datos (ej. PostgreSQL, SQLite, MongoDB)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h6>Proyectos y Aplicaciones Destacadas (Demostración de Habilidades):</h6>
+                    <ul class="list-unstyled mb-4">
+                        <li><strong>Desarrollo de Blog/Portafolio (Angular & Python Backend):</strong> Construcción de
+                            un portafolio web dinámico para gestionar y mostrar proyectos, optimizando el rendimiento y
+                            la escalabilidad. Desplegado manualmente en un VPS con Debian y Apache.</li>
+                        <li><strong>Clonador de Voz (Python):</strong> Herramienta de IA para clonar mi propia voz a
+                            partir de texto, diseñada para agilizar la producción de contenido para YouTube. Demuestra
+                            habilidades en procesamiento de audio y automatización con Python.</li>
+                        <li><strong>Buscador de Noticias (HTML, CSS, JavaScript & Framework de Escritorio):</strong>
+                            Aplicación de escritorio para la recopilación automatizada de noticias relevantes para
+                            contenido en LinkedIn, explorando el uso de APIs externas y desarrollo de aplicaciones de
+                            escritorio.</li>
+                        <li><strong>Juego de Cartas (Android Studio & Jetpack Compose):</strong> Desarrollo de un juego
+                            de cartas básico en Android, superando la complejidad de las interfaces de usuario con
+                            Jetpack Compose y aplicando conceptos de desarrollo móvil.</li>
+                        <li><strong>Backend en Node.js:</strong> Implementación de un backend separado para experimentar
+                            con arquitecturas más rápidas y mejorar la experiencia del cliente, lidiando con desafíos de
+                            CORS.</li>
+                        <li><strong>Proyectos Futuros:</strong> Planificación y desarrollo de una tienda online
+                            compleja, lo que implica diseño de bases de datos (tablas de entidad-relación), diagramas de
+                            clases para el frontend (Angular) y aplicación de metodologías ágiles.</li>
+                    </ul>
+
+                    <h6>Herramientas y Otros:</h6>
+                    <ul class="list-unstyled d-flex flex-wrap gap-2">
+                        <li class="badge">Git</li>
+                        <li class="badge">VS Code</li>
+                        <li class="badge">IntelliJ IDEA</li>
+                        <li class="badge">Metodologías Ágiles (Scrum, Kanban)</li>
+                        <li class="badge">Jira</li>
+                        <li class="badge">Trello</li>
+                        <li class="badge">Postman</li>
+                        <li class="badge">Pytest</li>
+                        <li class="badge">Jest</li>
+                        <li class="badge">Administración de VPS (Debian, SSH, Apache)</li>
+                        <li class="badge">C# (familiaridad)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-dark">Mi Filosofía</h2>
+                    <p class="card-text">
+                        Mi filosofía de desarrollo se basa en la <strong>mejora continua, la calidad del código y la
+                            creación de soluciones que generen un valor real y duradero</strong>. Desde mi experiencia
+                        como empresario, comprendo la importancia de la <strong>eficiencia, la escalabilidad y la
+                            adaptabilidad</strong> en cualquier proyecto.
+                    </p>
+                    <p class="card-text">
+                        Más allá del código, mi propósito es <strong>resolver problemas para las personas y las
+                            comunidades</strong>, creando productos que no solo sean funcionales, sino que contribuyan
+                        al <strong>bien común</strong>. Creo firmemente en la responsabilidad de utilizar el
+                        conocimiento y el talento para <strong>facilitar la vida de otros</strong>, impulsando un
+                        crecimiento que beneficie a todos y sentando las bases para un futuro próspero. Mi objetivo es
+                        convertir ideas complejas en <strong>productos funcionales y accesibles</strong>, manteniendo
+                        siempre un alto estándar de rendimiento y mantenibilidad, con la visión de construir una empresa
+                        tecnológica capaz de competir y ayudar a nivel global.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <p>¿Quieres saber más? ¡No dudes en contactarme!</p>
+                {# routerLink reemplazado por {% url %} #}
+                <a href="{% url 'blog:contacto' %}" class="btn btn-lg btn-success">
+                    <i class="bi bi-envelope-fill me-2"></i> Contactar
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

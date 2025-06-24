@@ -1,0 +1,118 @@
+/* backend_jDango/static/css/contact.css */
+
+
+/* --- Estilos Generales de la Tarjeta (ya los tenías, los mantenemos) --- */
+.contact-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem var(--color-card-shadow);
+    /* Puedes añadir height: 100%; aquí si tus tarjetas no tienen la misma altura total */
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem var(--color-hover-shadow);
+}
+
+/* --- Iconos dentro de las tarjetas (mantén tu color) --- */
+.contact-icon {
+    font-size: 3rem;
+    color: var(--color-primary); /* Este es el color del icono en tus imágenes */
+    margin-bottom: 0.5rem;
+}
+
+/* --- Título Principal de la Página (H1) --- */
+/* Esta clase debería estar en tu HTML: <h1 class="contact-page-main-title"> */
+.contact-page-main-title {
+    color: var(--color-primary); /* El color que ya tenías */
+    font-size: 3.5rem; /* El tamaño que ya tenías */
+    font-weight: bold;
+    margin-bottom: 3rem;
+    letter-spacing: normal;
+    word-spacing: normal;
+    /* --- Centrado aquí --- */
+    text-align: center;
+    width: 100%; /* Asegura que ocupe el ancho completo para centrar */
+}
+
+/* --- Títulos dentro de las Tarjetas (H5) --- */
+/* Esta clase debería estar en tu HTML: <h5 class="contact-card-heading mt-3"> */
+.contact-card-heading {
+    color: var(--color-dark-text); /* Color que ya tenías */
+    font-size: 1.5rem; /* Tamaño que ya tenías */
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: normal;
+    word-spacing: normal;
+    /* --- Centrado aquí --- */
+    text-align: center;
+    width: 100%; /* Asegura que ocupe el ancho completo para centrar */
+}
+
+/* --- Texto de descripción dentro de las tarjetas (P) --- */
+/* Esta es la clase de Bootstrap <p class="card-text"> */
+.contact-card .card-text {
+    /* --- Centrado aquí --- */
+    text-align: center;
+    width: 100%; /* Asegura que ocupe el ancho completo para centrar */
+    /* Para que ocupe el espacio y empuje el botón */
+    flex-grow: 1; /* Permite que el párrafo crezca dentro del flex container */
+    /* Si el texto es muy corto y quieres que se centre verticalmente dentro de su espacio flex-grow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem; /* Espacio entre el texto y el botón */
+}
+
+/* --- CONTENEDOR PRINCIPAL DE CADA TARJETA (card-body) --- */
+/* ESTO ES LO MÁS IMPORTANTE PARA EL CENTRADO DE TODOS LOS ELEMENTOS HIJOS
+   (icono, h5, p, botón) y para que los botones se alineen abajo. */
+/* Asegúrate de que tu HTML tenga <div class="card-body d-flex flex-column align-items-center justify-content-between"> */
+.contact-card .card-body {
+    display: flex; /* Habilita Flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* **CENTRADO HORIZONTAL DE TODOS LOS ELEMENTOS HIJOS** */
+    justify-content: space-between; /* Empuja el botón al final si el contenido es corto */
+    height: 100%; /* **CRUCIAL**: Asegura que el card-body ocupe toda la altura de la tarjeta */
+    padding: 1.5rem; /* Mantén el padding estándar de Bootstrap o ajústalo */
+}
+
+/* --- Botones dentro de las tarjetas (mantén tus colores) --- */
+/* Clase de Bootstrap <a class="btn btn-primary btn-sm"> */
+.contact-card .btn-primary {
+    background-color: var(--color-secondary); /* El color del botón en tus imágenes */
+    border-color: var(--color-secondary); /* El borde del botón en tus imágenes */
+    color: var(--color-light-text);
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* --- Altura uniforme y centrado del texto del botón --- */
+    min-height: 48px; /* Altura mínima para todos los botones */
+    display: flex; /* Convierte el botón en un contenedor flex */
+    align-items: center; /* Centra el texto del botón verticalmente */
+    justify-content: center; /* Centra el texto del botón horizontalmente */
+    width: auto; /* Permite que el botón se ajuste a su contenido */
+    /* Puedes usar width: 100%; si quieres que los botones siempre ocupen todo el ancho de la tarjeta */
+    /* text-align: center; -- Ya lo hace justify-content: center aquí, pero como fallback */
+}
+
+.contact-card .btn-primary:hover {
+    background-color: #0056b3; /* Un tono más oscuro para el hover */
+    transform: translateY(-2px);
+}
+
+/* --- Sección del contenedor principal (si tienes .contenedor o si es .container) --- */
+/* Basado en tu código anterior, si tienes esta clase custom */
+.contenedor {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Si usas la clase 'container' de Bootstrap, no necesitas esta regla a menos que la estés sobrescribiendo.
+   En tu HTML veo 'container my-5', así que esta regla custom podría no ser necesaria o entrar en conflicto. */
+/* .container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+} */

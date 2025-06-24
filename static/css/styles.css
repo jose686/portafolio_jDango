@@ -1,0 +1,20 @@
+:root {
+    --color-primary: #1a237e; /* Azul oscuro */
+    --color-primary-light: #4c4c8d; /* Un tono más claro del azul principal */
+    --color-secondary: #007bff; /* Azul de Bootstrap, para secondary */
+    --color-accent: #ff4081; /* Un color de acento vibrante (ej. rosa/fucsia) */
+    --color-dark-text: #333333; /* Texto oscuro principal */
+    --color-light-text: #ffffff; /* Texto claro (para fondos oscuros) */
+    --color-light-bg: #f7f9fc; /* Fondo general muy claro */
+    --color-card-shadow: rgba(0, 0, 0, 0.1); /* Sombra suave para tarjetas */
+    --color-hover-shadow: rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+    --color-success: #28a745; /* <-- ¡NUEVA VARIABLE! El verde de éxito que te gustaba */
+    --color-secondary-text: #6c757d; /* Texto gris de Bootstrap */
+}
+
+body {
+    background-color:rgb(229,240,250); /* Un gris muy suave y menos brillante que el blanco puro */
+    color: #333333; /* Asegura un color de texto base si no está definido */
+    /* Opcional: puedes añadir una fuente predeterminada global aquí si quieres */
+    /* font-family: 'Roboto', sans-serif; */
+}

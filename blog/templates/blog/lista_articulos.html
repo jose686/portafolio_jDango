@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_filters %} {# Mantén esto si lo usas en otro lado o por si acaso #}
+
+{% block title %}José Rodríguez | Desarrollador de Software{% endblock title %}
+
+{% block content %}
+    {# Mensajes de carga/error (manteniendo tu estructura) #}
+    {% if error_message %}
+        <div class="alert alert-danger text-center my-5" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    {% if is_loading %}
+        <div class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando proyectos...</span>
+            </div>
+            <p class="mt-3">Cargando tus proyectos...</p>
+        </div>
+    {% endif %}
+
+    {# Sección de Héroe #}
+    <section class="jumbotron text-center py-5 hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInUp">¡Hola! Soy Jose</h1>
+            <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">Desarrollador Full-Stack apasionado por crear soluciones web innovadoras y eficientes.</p>
+            <p class="animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="{% url 'blog:sobre_mi' %}" class="btn btn-primary btn-lg me-3">Conoce Sobre Mí</a> {# Ajustado a tu URL existente #}
+                <a href="{% url 'blog:contacto' %}" class="btn btn-outline-secondary btn-lg">Contacto</a> {# Ajustado a tu URL existente #}
+            </p>
+        </div>
+    </section>
+
+    {# Título de la Sección de Proyectos #}
+    <div class="project-section-title-card text-center my-5 p-4 rounded-3 shadow-sm animate__animated animate__fadeInUp animate__delay-3s">
+        <h2 class="h3 fw-bold mb-0">Mis Proyectos Recientes</h2>
+        <p class="lead text-muted mt-2 mb-0">Una selección de mis trabajos más destacados.</p>
+    </div>
+
+    {# Lista de Proyectos/Artículos #}
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for articulo in articulos %}
+                <div class="col">
+                    <div class="card h-100 shadow-lg border-0 rounded-3 project-card">
+                        {# **CAMBIO CLAVE AQUÍ:** Usamos el nuevo atributo 'display_image_url' preparado en la vista #}
+                        {% if articulo.display_image_url %}
+                            <img src="{{ articulo.display_image_url }}" class="card-img-top project-image" alt="Imagen del proyecto {{ articulo.titulo }}">
+                        {% else %}
+                            {# Imagen de placeholder si no hay imagen de bloque asignada #}
+                            <img src="{% static 'images/placeholder.png' %}" class="card-img-top project-image" alt="Imagen por defecto">
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column">
+                        <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+                            <h5  id="articulo-titulo" class="articulo-titulo-principal-personalizado">{{ articulo.titulo }}</h5>
+                            <p class="card-text text-muted flex-grow-1">{{ articulo.meta_descripcion|safe }}</p>
+                            
+                            <div class="mt-auto">
+                                <a href="{% url 'blog:detalle_articulo' slug=articulo.slug %}" class="btn btn-primary w-100 mt-2 btn-lg">Ver Proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No hay proyectos recientes disponibles.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Navegación de Paginación (manteniendo tu estructura) #}
+    {% if is_paginated %} 
+        <nav aria-label="Navegación de proyectos" class="my-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a class="page-link" href="?page=1" aria-label="Primera">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a class="page-link" href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" aria-label="Anterior">
+                        <span aria-hidden="true">&lsaquo;</span>
+                    </a>
+                </li>
+
+                {% for i in paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a class="page-link" href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" aria-label="Siguiente">
+                        <span aria-hidden="true">&rsaquo;</span>
+                    </a>
+                </li>
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a class="page-link" href="?page={{ paginator.num_pages }}" aria-label="Última">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+
+{% endblock content %}

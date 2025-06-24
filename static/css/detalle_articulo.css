@@ -1,0 +1,170 @@
+/* backend_jDango/static/css/detalle_articulo.css */
+
+.container .btn.btn-secondary {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-light-text);
+}
+.container .btn.btn-secondary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.container .card.border-primary {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px var(--color-card-shadow);
+    background-color: var(--color-light-text);
+}
+
+.container .card .card-title {
+    color: var(--color-primary) !important; /* ESTA ES LA LÍNEA QUE DEBEMOS CAMBIAR */
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.container .card .card-text.lead {
+    color: var(--color-dark-text);
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.container .card .card-text small {
+    color: var(--color-secondary-text);
+}
+
+.card-body {
+    text-align: left;
+}
+
+.card.mb-4.shadow-sm.border-light {
+    border-color: var(--color-light-bg);
+    box-shadow: 0 2px 8px var(--color-card-shadow);
+    background-color: var(--color-light-text);
+}
+.card.mb-4.shadow-sm.border-light:hover {
+    box-shadow: 0 6px 15px var(--color-hover-shadow);
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-body h2.text-secondary {
+    color: var(--color-primary-light);
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.card-body .fs-5.lh-base.text-dark,
+.card-body .text-dark {
+    color: var(--color-dark-text);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-body .text-center img {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    max-width: 90%;
+    height: auto;
+}
+.card-body .text-muted.mt-2.small.fst-italic {
+    color: var(--color-secondary-text);
+}
+
+.card-body ul.list-group-flush {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.card-body .list-group-item {
+    color: var(--color-dark-text);
+    font-size: 1.05rem;
+}
+.card-body .list-group-item i.text-success {
+    color: var(--color-success);
+}
+
+.card-body .alert.alert-info {
+    background-color: rgba(var(--color-primary), 0.1); /* Esto necesita un ajuste. rgba() no acepta variables CSS directamente como primer argumento sin trucos */
+    border-color: var(--color-primary);
+    color: var(--color-dark-text);
+}
+
+/* **Importante:** La línea de arriba: `background-color: rgba(var(--color-primary), 0.1);`
+   no funcionará directamente en CSS puro como esperas porque `rgba()` espera componentes R, G, B numéricos, no una variable que representa una cadena de color.
+   Opciones:
+   1. Usar un color hexadecimal con transparencia si conoces el color exacto.
+   2. Si `var(--color-primary)` es `#1a237e`, puedes intentar `background-color: rgba(26, 35, 126, 0.1);` (convirtiendo el hex a RGB).
+   3. Dejarlo sin transparencia o usar un color fijo si no es crítico.
+   Por ahora, la dejaré como está, pero tenlo en cuenta si ves que no aplica la transparencia.
+*/
+
+
+.container .card.border-primary {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 10px var(--color-card-shadow);
+    background-color: var(--color-light-text);
+    border-radius: 0.5rem;
+}
+
+.container .card.border-primary::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 90deg,
+        var(--color-accent) 120deg,
+        var(--color-primary-light) 150deg,
+        transparent 180deg,
+        transparent 360deg
+    );
+    animation: rotate-border 6s linear infinite;
+    z-index: 0;
+}
+
+.container .card.border-primary::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    background: var(--color-light-text);
+    border-radius: 0.45rem;
+    z-index: 1;
+}
+
+.container .card.border-primary .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes rotate-border {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.articulo-titulo-principal-personalizado {
+    color: var( --color-card-shadowy); /* Tu color deseado */
+    font-size: 1.5rem; /* El tamaño grande que quieres */
+    margin-bottom: 0.5rem;
+    letter-spacing: normal; /* Asegura el espaciado normal entre letras */
+    word-spacing: normal; /* Asegura el espaciado normal entre palabras */
+    text-align: left; /* Alineación, si quieres que sea diferente de Bootstrap */
+    font-weight: bold; /* O el peso de fuente que prefieras, por ejemplo, 700 */
+    line-height: 1.2; /* Ajusta el espacio entre líneas si es necesario */
+}

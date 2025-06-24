@@ -1,0 +1,129 @@
+/* src/app/home/home.component.css */
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px; /* Espacio entre botones */
+}
+
+.pagination-controls button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.pagination-controls button.active {
+    background-color: #007bff; /* Color de tu tema */
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loading-message, .error-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+.error-message {
+    color: #dc3545; /* Rojo para errores */
+}
+
+
+/* Estilos para el componente de blog */
+/* Estilos globales (solo para Home, de momento) aplicando la paleta */
+
+/* Hero Section */
+.jumbotron {
+    background: linear-gradient(135deg, var(--color-light-bg) 0%, #bbdefb 100%); /* Mantengo un segundo color de Bootstrap si te gusta el degradado */
+    color: var(--color-dark-text);
+    padding: 6rem 0;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.jumbotron h1 {
+    font-size: 3.5rem;
+    color: var(--color-primary); /* Usando la variable de color principal */
+}
+
+.jumbotron .lead {
+    font-size: 1.5rem;
+    color: var(--color-secondary-text); /* Usando la variable para texto secundario */
+}
+
+/* Botones principales */
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: #0d124b; /* Un tono más oscuro del primary */
+    border-color: #0d124b;
+}
+
+.btn-outline-secondary {
+    border-color: var(--color-secondary-text);
+    color: var(--color-secondary-text);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-secondary-text);
+    color: white;
+}
+
+/* Título de la sección de proyectos */
+h2.text-dark {
+    color: var(--color-dark-text) !important; /* Asegura que se use el color de texto principal */
+}
+
+/* Tarjetas de Proyecto */
+.project-card {
+    border-color: var(--color-light-bg); /* Un borde muy sutil con el color claro */
+    box-shadow: 0 0.5rem 1rem var(--color-card-shadow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem var(--color-hover-shadow) !important;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+.card-text.flex-grow-1 {
+    margin-bottom: auto;
+}
+
+.project-section-title-card {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white ; /* <-- ¡Añade !important para asegurar que se aplique! */
+    border: 1px solid var(--color-light-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+

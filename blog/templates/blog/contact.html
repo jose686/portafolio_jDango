@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto - José Rodríguez Desarrollador{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+    <div class="container my-5">
+        {# Título principal: Asegúrate que tenga esta clase para que el CSS lo centre #}
+        <h1 class="contact-page-main-title">Ponte en Contacto</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                {# contact-card y h-100 para altura uniforme de las tarjetas #}
+                <div class="card h-100 shadow-sm contact-card">
+                    {# card-body con clases de Flexbox para centrar los elementos internos #}
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                        <i class="bi bi-envelope-fill contact-icon"></i>
+                        {# contact-card-heading y mt-3 para el H5 #}
+                        <h5 class="contact-card-heading mt-3">Correo Electrónico</h5>
+                        {# card-text para el párrafo, es clase de Bootstrap que también usaremos en CSS #}
+                        <p class="card-text">La mejor forma para consultas profesionales.</p>
+                        {# btn btn-primary btn-sm son tus clases de botón existentes #}
+                        <a href="mailto:info@joserodriguezdeveloper.com?subject=Consulta desde tu Portafolio" class="btn btn-primary btn-sm">Enviar Email</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm contact-card">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                        <i class="bi bi-linkedin contact-icon"></i>
+                        <h5 class="contact-card-heading mt-3">LinkedIn</h5>
+                        <p class="card-text">Conecta conmigo en mi perfil profesional.</p>
+                        <a href="https://www.linkedin.com/in/joserodriguezdeveloper" target="_blank" class="btn btn-primary btn-sm">Ver Perfil</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm contact-card">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                        <i class="bi bi-github contact-icon"></i>
+                        <h5 class="contact-card-heading mt-3">GitHub</h5>
+                        <p class="card-text">Explora mis proyectos y contribuciones.</p>
+                        <a href="https://github.com/jose686" target="_blank" class="btn btn-primary btn-sm">Ir a GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm contact-card">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                        <i class="bi bi-youtube contact-icon"></i>
+                        <h5 class="contact-card-heading mt-3">Canal de YouTube (Laboratorio de Código)</h5>
+                        <p class="card-text">Contenido sobre desarrollo y más.</p>
+                        <a href="https://www.youtube.com/@ElLaboratoriodeCódigo" target="_blank" class="btn btn-primary btn-sm">Ver Canal</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm contact-card">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                        <i class="bi bi-whatsapp contact-icon"></i>
+                        <h5 class="contact-card-heading mt-3">WhatsApp</h5>
+                        <p class="card-text">Envía un mensaje rápido para consultas.</p>
+                        <a href="https://wa.me/633785035" target="_blank" class="btn btn-primary btn-sm">Enviar WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}

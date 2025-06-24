@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_filters %} {# Esto es para tu filtro personalizado 'split_lines' #}
+
+{% block title %}{{ articulo.titulo }} - Mi Blog{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <div class="card mb-4 shadow-sm border-primary">
+                <div class="card-body text-center">
+                    <h1 class="card-title display-4 fw-bold text-primary">{{ articulo.titulo }}</h1>
+                    <p class="card-text lead text-muted">{{ articulo.meta_description }}</p>
+                    
+                    <hr class="my-3">
+
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Publicado el
+                            {% if articulo.fecha_publicacion %}
+                                <span class="fw-bold text-dark">
+                                    {{ articulo.fecha_publicacion|date:"l, j F Y" }}
+                                </span>
+                            {% else %}
+                                <span class="text-muted fst-italic">
+                                    (Próximamente)
+                                </span>
+                            {% endif %}
+                        </small>
+                        {% comment %}
+                        # Si tu modelo Articulo tiene un campo de relación ManyToMany con Categorias
+                        {% if articulo.categorias.all %} en
+                            {% for categoria in articulo.categorias.all %}
+                                <span class="badge bg-secondary me-1">{{ categoria.nombre }}</span>{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% endcomment %}
+                    </p>
+                </div>
+            </div>
+
+            {# ***** SECCIÓN PARA RENDERIZAR LOS BLOQUES DE CONTENIDO ***** #}
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    {% comment %}
+                    -- Se elimina el bloque if articulo.contenido porque ahora usamos los bloques --
+                    {% if articulo.contenido %}
+                        {{ articulo.contenido|safe }}
+                    {% else %}
+                        <p>Contenido del artículo no disponible.</p>
+                    {% endif %}
+                    -- Fin de eliminación --
+                    {% endcomment %}
+
+                    {# Ahora, iteramos sobre los 'bloques' pasados desde la vista #}
+                    {% if bloques %} {# Verifica si hay bloques para mostrar #}
+                        {% for bloque in bloques %}
+                            {# Lógica para renderizar diferentes tipos de bloques #}
+                            {% if bloque.tipo_bloque == 'titulo' %}
+                                <h2 class="text-secondary mb-3">{{ bloque.contenido_texto|safe }}</h2>
+                            {% elif bloque.tipo_bloque == 'parrafo' %}
+                                <p class="fs-5 lh-base text-dark">{{ bloque.contenido_texto|safe }}</p>
+                            {% elif bloque.tipo_bloque == 'imagen' %}
+                                {% if bloque.ruta_imagen %} {# Asegúrate de que la imagen existe #}
+                                    <div class="text-center my-4">
+                                        <img src="{{ bloque.ruta_imagen.url }}" class="img-fluid rounded shadow-lg border border-2 border-light"
+                                             alt="{{ bloque.contenido_texto|default:'Imagen del Proyecto' }}" style="max-width: 90%;">
+                                        {% if bloque.contenido_texto %}
+                                            <p class="text-muted mt-2 small fst-italic">{{ bloque.contenido_texto }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% elif bloque.tipo_bloque == 'lista' %}
+                                <ul class="list-group list-group-flush my-4">
+                                    {# CAMBIO CRÍTICO: Usar |split_lines (con guion bajo) #}
+                                    {% for item in bloque.contenido_texto|default:""|split_lines %}
+                                        {% if item|trim %}
+                                            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{{ item|trim }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% elif bloque.tipo_bloque == 'codigo' %}
+                                <pre><code class="language-python">{{ bloque.contenido_texto }}</code></pre> {# Asume Prism.js/Highlight.js #}
+                            {% elif bloque.tipo_bloque == 'otro' %}
+                                <div class="alert alert-info">{{ bloque.contenido_texto|safe }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %} {# Si no hay bloques asociados al artículo #}
+                        <p class="text-center text-muted fst-italic">Este artículo aún no tiene contenido detallado.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <hr class="my-5">
+            <a href="{% url 'blog:lista_articulos' %}" class="btn btn-secondary btn-lg">Volver al Portafolio</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
