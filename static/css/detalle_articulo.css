@@ -168,3 +168,29 @@
     font-weight: bold; /* O el peso de fuente que prefieras, por ejemplo, 700 */
     line-height: 1.2; /* Ajusta el espacio entre líneas si es necesario */
 }
+/* En tu static/css/style.css (o donde tengas tus estilos) */
+
+.responsive-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto; /* CENTRA EL CONTENEDOR */
+    margin-bottom: 25px; /* Espacio debajo del video */
+}
+
+.responsive-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Opcional: Si quieres un tamaño máximo para el video en pantallas grandes */
+.video-max-width {
+    max-width: 900px; /* Ajusta este valor según el ancho deseado */
+    margin: 0 auto; /* Centra este contenedor con el max-width */
+}

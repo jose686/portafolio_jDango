@@ -71,7 +71,8 @@ class BloqueContenido(models.Model):
         ('parrafo', 'Párrafo'),
         ('imagen', 'Imagen'),
         ('lista', 'Lista'),
-        ('codigo', 'Código'), # Añadido para un programador :)
+        ('youtube_video', 'Video de YouTube'), # ¡NUEVA LÍNEA
+        ('codigo', 'Código'), 
         ('otro', 'Otro'),
     ]
     tipo_bloque = models.CharField(max_length=20, choices=TIPO_BLOQUE_CHOICES, default='parrafo')
